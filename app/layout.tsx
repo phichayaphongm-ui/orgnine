@@ -11,6 +11,7 @@ const kanit = Kanit({
 export const metadata: Metadata = {
   title: "Lotus's Operation Team Org-chart",
   description: "ระบบจัดการ Org Chart และข้อมูลทีมงาน Lotus's Operation Team",
+  robots: "noindex, nofollow",
 }
 
 export default function RootLayout({
