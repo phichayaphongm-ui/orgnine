@@ -36,7 +36,13 @@ export interface AgmRow {
 }
 
 export function getSettings() {
-  if (typeof window === "undefined") return { webAppUrl: "" }
+  if (typeof window === "undefined") return { webAppUrl: process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "" }
+
+  // Prioritize Environment Variable (for security and Vercel deployment)
+  const envUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
+  if (envUrl) return { webAppUrl: envUrl }
+
+  // Fallback to localStorage (for local manual override)
   const s = localStorage.getItem(SETTINGS_KEY)
   return s ? JSON.parse(s) : { webAppUrl: "" }
 }
